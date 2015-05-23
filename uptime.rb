@@ -7,9 +7,9 @@ require "json"
 index = "uptime"
 type = "log"
 
-# `curl -XDELETE "http://localhost:9200/#{index}"`
-# `curl -XPUT "localhost:9200/#{index}"`
-# `curl -XPUT localhost:9200/#{index} -d '{
+# puts `curl -XDELETE "http://localhost:9200/#{index}"`
+# puts `curl -XPUT "localhost:9200/#{index}"`
+# puts `curl -XPUT "localhost:9200/#{index}" -d '{
 #   "mappings": {
 #     "#{type}": {
 #       "properties": {
