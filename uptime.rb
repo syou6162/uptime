@@ -7,9 +7,9 @@ require "json"
 index = "uptime"
 type = "log"
 
-# `curl -XDELETE "http://localhost:9200/#{index}"`
-# `curl -XPUT "localhost:9200/#{index}"`
-# `curl -XPUT localhost:9200/#{index} -d '{
+# puts `curl -XDELETE "http://localhost:9200/#{index}"`
+# puts `curl -XPUT "localhost:9200/#{index}"`
+# puts `curl -XPUT "localhost:9200/#{index}" -d '{
 #   "mappings": {
 #     "#{type}": {
 #       "properties": {
@@ -27,7 +27,8 @@ tmp = `uptime | perl -ne "print /load averages: (.*?)$/"`.split(" ").map{|item| 
 [1, 5, 15].each_with_index{|minute, idx|
   id = "#{minute} #{date}"
   puts "{ \"index\" : { \"_index\" : \"#{index}\", \"_type\" : \"#{type}\", \"_id\" : \"#{id}\"} }"
-  result = {"minute" => minute,
+  result = {"time" => date,
+            "minute" => minute,
             "load_average" => tmp[idx]}
   puts result.to_json
 }
